@@ -1,6 +1,9 @@
 require 'optparse'
 
 # Usage: seo_audit [options] path
+#    -d, --debug                      debug mode
+#    -v, --version                    show this version
+#    -h, --help                       show this message
 
 options = {}
 OptionParser.new do |opts|
@@ -16,10 +19,15 @@ OptionParser.new do |opts|
     exit
   end
 
+  opts.on_tail("-h", "--help", "Show help message") do
+    puts opts
+    exit
+  end
+
   opts.parse!
 end
 
-checker = SeoAudit::Checker.new(ARGV.first, options)
+checker = SeoAudit::Auditor.new(ARGV.first, options)
 checker.run
-checker.output
+puts checker.output
 exit checker.errors.length
