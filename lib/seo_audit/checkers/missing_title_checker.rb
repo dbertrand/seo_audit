@@ -7,6 +7,10 @@ module SeoAudit
         !page.title.empty?
       end
 
+      def message
+        'Missing Title Tag'
+      end
+
     end
 
   end
