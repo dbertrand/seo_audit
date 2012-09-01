@@ -1,10 +1,10 @@
 module SeoAudit
   module PageCheckers
 
-    class TitleLengthChecker < Core::PageChecker
+    class MissingTitleChecker < Core::PageChecker
 
       def check(page)
-        page.title.length <= 70
+        !page.title.empty?
       end
 
     end

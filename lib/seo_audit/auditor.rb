@@ -38,7 +38,7 @@ module SeoAudit
       Anemone.crawl(@url) do |anemone|
         anemone.on_every_page do |page|
 
-            @page_checks.each { |checker| puts checker.check(page) }
+          @page_checks.each { |checker| puts checker.check(SeoAudit::Core::Page.new(page)) }
 
         end
       end
